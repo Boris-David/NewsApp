@@ -30,7 +30,40 @@ extension HomeTabBarItemScreenViewModel {
     ) {
         let article = articles[indexPath.row]
         
-        return (sourceId: article.source?.id, sourceName: article.source?.name, author: article.author, title: article.title, description: article.articleDescription, url: article.url, urlToImage: article.urlToImage, publishedAt: article.publishedAt, content: article.content)
+        var articleTitleComponents = article.title?.components(separatedBy: "-")
+        
+        let articleSource = articleTitleComponents?.removeLast()
+        let articleTitle = articleTitleComponents?.joined()
+        
+        let publishedDate = getLocaleDateFromApiResponse(stringDate: article.publishedAt)
+        
+        
+        return (sourceId: article.source?.id, sourceName: articleSource, author: article.author, title: articleTitle, description: article.articleDescription, url: article.url, urlToImage: article.urlToImage, publishedAt: publishedDate, content: article.content)
+    }
+    
+    
+    private func getLocaleDateFromApiResponse(stringDate: String? = "") -> String {
+        var publishedDate: String?
+        
+        guard let stringDate = stringDate else {
+            return ""
+        }
+        let apiDateFormatter = DateFormatter()
+
+        apiDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        let articleDateWithApiTimeZone = apiDateFormatter.date(from: stringDate)
+        
+        let localeDateFormatter = DateFormatter()
+        localeDateFormatter.dateStyle = .short
+        localeDateFormatter.timeStyle = .short
+        localeDateFormatter.dateFormat = "EEEE, d MMM yyyy à HH:mm"
+        localeDateFormatter.locale = Locale(identifier: "fr")
+
+        
+        publishedDate = "Date de publication: \(localeDateFormatter.string(from: articleDateWithApiTimeZone!))"
+        
+        return publishedDate ?? ""
     }
     
 }

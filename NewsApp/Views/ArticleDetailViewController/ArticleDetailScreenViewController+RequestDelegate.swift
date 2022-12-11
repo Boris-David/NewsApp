@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+extension ArticleDetailScreenViewController: ViewRequestsDelegate {
+    // Nothing for the MVP
+    func didUpdate(with state: ViewState) {
+        //
+    }
+    
+}

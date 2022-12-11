@@ -132,6 +132,11 @@ struct NewsService {
         }.resume()
     }
     
+//    // Source of Evolution
+//    private static func isConnectedToInternet() {
+//        
+//    }
+    
 }
 
 

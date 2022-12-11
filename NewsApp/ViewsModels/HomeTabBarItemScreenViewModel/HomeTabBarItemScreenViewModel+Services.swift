@@ -12,7 +12,7 @@ extension HomeTabBarItemScreenViewModel {
     
     func loadNews() {
         self.state = .gettingData
-        NewsService.getTopNewsOf(country: .fr) {
+        NewsService.getTopNewsOf(country: .fr, maxNumberOfResults: 50) {
             result in
             switch result {
             case .success(let articles):

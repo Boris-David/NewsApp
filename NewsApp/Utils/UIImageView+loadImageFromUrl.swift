@@ -9,15 +9,20 @@ import Foundation
 import UIKit
 
 extension UIImageView {
+    
     func loadImageFrom(stringURLAddress: String) {
+    
         guard let url = URL(string: stringURLAddress) else {
+            self.image = UIImage(named: "imageUnavailable")
             return
         }
         
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.global().async { [weak self] in
             if let imageData = try? Data(contentsOf: url) {
                 if let loadedImage = UIImage(data: imageData) {
+                    DispatchQueue.main.async {
                         self?.image = loadedImage
+                    }
                 }
             }
         }

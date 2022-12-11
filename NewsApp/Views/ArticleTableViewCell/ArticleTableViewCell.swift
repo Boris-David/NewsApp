@@ -11,9 +11,10 @@ class ArticleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var articleTitleLabel: UILabel!
     @IBOutlet weak var articleImageView: UIImageView!
-    @IBOutlet weak var articleDescriptionLabel: UILabel!
     
-    @IBOutlet weak var likeArticleButton: UIButton!
+    @IBOutlet weak var articleSourceNameLabel: UILabel!
+    
+    @IBOutlet weak var articlePublishedDateUILabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,18 +33,15 @@ class ArticleTableViewCell: UITableViewCell {
         publishedAt: String?,
         content: String? )
     ) {
-        
         articleTitleLabel.text = data.title
-        //articleTitleLabel.showsExpansionTextWhenTruncated = true
+                
         articleImageView.loadImageFrom(stringURLAddress: data.urlToImage ?? "")
-        articleDescriptionLabel.text = data.description
-        //articleTitleLabel.showsExpansionTextWhenTruncated = true
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+        articleImageView.layer.cornerRadius = 10
+        articleSourceNameLabel.text = data.sourceName
     
+        articleTitleLabel.text = data.title
+        articleSourceNameLabel.text = data.sourceName
+        articlePublishedDateUILabel.text = data.publishedAt
+        
+    }
 }

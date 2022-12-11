@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+// HERE IS FOR OUTLETS AND CONNECTION WITH UI ELEMENTS
+extension ArticleDetailScreenViewController {
+    
+    
+    
+}

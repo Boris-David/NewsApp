@@ -6,7 +6,18 @@
 //
 
 import Foundation
+import UIKit
 
-struct ArticleDetailScreenRouter {
+struct ArticleDetailScreenRouter: Router {
+        
+    unowned var viewModel: ArticleDetailScreenViewModel
+    
+    init(viewModel: ArticleDetailScreenViewModel) {
+        self.viewModel = viewModel
+    }
+    
+    func route(to routeID: String, from context: UIViewController, parameters: Any?) {
+        // Nothing for the MVP
+    }
     
 }

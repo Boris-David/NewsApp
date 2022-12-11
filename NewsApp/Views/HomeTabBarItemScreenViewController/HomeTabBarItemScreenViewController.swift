@@ -8,17 +8,23 @@
 import UIKit
 
 class HomeTabBarItemScreenViewController: UIViewController {
+    
+    enum Route: String {
+        case articleDetail
+    }
 
     @IBOutlet weak var newsTableView: UITableView!
     
+    private let refreshControl = UIRefreshControl()
+    
     let viewModel: HomeTabBarItemScreenViewModel
+    var router: Router
     
     required init(viewModel: HomeTabBarItemScreenViewModel) {
         self.viewModel = viewModel
+        self.router = HomeTabBarItemScreenRouter(viewModel: self.viewModel)
         super.init(nibName: XibIdentifiers.homeTabBarItem.rawValue, bundle: nil)
         self.viewModel.delegate = self
-
-        //viewModel.loadNews()
     }
     
     required init?(coder: NSCoder) {
@@ -26,33 +32,32 @@ class HomeTabBarItemScreenViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-//        newsTableView.re
-//    }
-//
-//    required init(viewModel: HomeTabBarItemScreenViewModel) {
-//        self.viewModel = viewModel
-//        super.init()
-//        self.viewModel.delegate = self
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        //let xib = UINib(nibName: XibIdentifiers.articleCell.rawValue, bundle: nil)
-        //newsTableView.register(xib, forCellReuseIdentifier: XibIdentifiers.articleCell.rawValue)
+
         newsTableView.delegate = self
         newsTableView.dataSource = self
+        
+        newsTableView.backgroundColor = .white
+                
+        viewModel.loadNews()
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Actualisation...")
+        refreshControl.addTarget(self, action: #selector(self.refresh(sender:)), for: .valueChanged)
+        newsTableView.refreshControl = refreshControl
+
+    }
+    
+    @objc func refresh(sender: AnyObject) {
+        self.viewModel.loadNews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //
         super.viewWillAppear(animated)
-        viewModel.loadNews()
+        if let selectedIndexPath = newsTableView.indexPathForSelectedRow {
+            newsTableView.deselectRow(at: selectedIndexPath, animated: animated)
+        }
     }
 
 
@@ -65,5 +70,7 @@ class HomeTabBarItemScreenViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
 }

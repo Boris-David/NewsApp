@@ -7,6 +7,7 @@
 
 import UIKit
 
+// NOT USED IN THE MVP
 class LibrairyTabBarItemScreenViewModel: NSObject {
 
 }

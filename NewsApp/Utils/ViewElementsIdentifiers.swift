@@ -15,4 +15,5 @@ enum TableViewCellIdentifiers: String {
 enum XibIdentifiers: String {
     case homeTabBarItem = "HomeTabBarItemScreenViewController"
     case articleCell = "ArticleTableViewCell"
+    case articleDetail = "ArticleDetailScreenViewController"
 }

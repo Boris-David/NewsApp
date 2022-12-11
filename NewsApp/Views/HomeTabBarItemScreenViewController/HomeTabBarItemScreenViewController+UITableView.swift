@@ -10,7 +10,11 @@ import UIKit
 
 // UITableViewDelegate
 extension HomeTabBarItemScreenViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        router.route(to: Route.articleDetail.rawValue, from: self, parameters: viewModel.articles[indexPath.row])
+        // debugPrint("")
+        //
+    }
 }
 
 // UITableViewDataSource
@@ -24,7 +28,9 @@ extension HomeTabBarItemScreenViewController: UITableViewDataSource {
         tableView.register(UINib(nibName: XibIdentifiers.articleCell.rawValue, bundle: nil), forCellReuseIdentifier: TableViewCellIdentifiers.articleTableViewCellIdentifier.rawValue)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCellIdentifiers.articleTableViewCellIdentifier.rawValue, for: indexPath) as! ArticleTableViewCell
+        
         cell.configure(data: viewModel.getArticle(for: indexPath))
+        
         return cell
     }
     

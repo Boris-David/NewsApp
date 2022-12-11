@@ -14,7 +14,6 @@ class ArticleDetailScreenViewModel {
             delegate?.didUpdate(with: state)
         }
     }
-    
     var article: ArticleModel?
     
     init() {
