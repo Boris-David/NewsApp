@@ -1,5 +1,11 @@
 # NewsApp
 
+<p align = "center">
+  <img src ="NewsApp/Resources/Assets.xcassets/logo.imageset/logo.png?" ></img> 
+</p/
+
+
+
 News app is a simple iOS app build with Swift in a clean code architecture pattern: MVVM
 
 MVVM stands for Model, View, ViewModel. In this app we try to respect the responsabilities of each layer to make the code reusable and clear
@@ -38,3 +44,23 @@ To summarize, the different parts of this project architecture are MVVM + Servic
 - I wanted to build a UITabBar, with the homeScreen, a librairy screen in which there would be the news that the user save with his account and a search menu in which the user would be allow to search news related to specific words, and also find categories grouped by category.
 For this last point, I build on the code, especially in the NewsService.swift file, the network requests to get the news of a category; and the one for articles related to the user's keywords
 - Make so automated UI Tests and units tests to validate the network data parsing for example and other features
+- Prettify the User Interface
+
+
+## App screenshots
+
+<table>
+  <tr>
+    <td><p align = "center"> HOME SCREEN</p></td>
+    <td><p align = "center"> PULL TO REFRESH</p></td>
+    <td><p align = "center"> DETAIL SCREEN</p></td>
+   </tr> 
+   <tr>
+      <td><img src="./iPhone14ProHomeScreenPicture.png" alt="1" width = 360px height = 640px></td>
+      <td><img src="./iPhone14ProPullToRefresh.png" align="right" alt="2" width = 360px height = 640px></td>
+      <td><img src="./iPhone14ProDetailView.png" align="right" alt="3" width = 360px height = 640px>
+  </td>
+  </tr>
+</table>
+
+
