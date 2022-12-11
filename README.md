@@ -4,11 +4,15 @@
   <img src ="NewsApp/Resources/Assets.xcassets/logo.imageset/logo.png?" ></img> 
 </p/
 
-
-
 News app is a simple iOS app build with Swift in a clean code architecture pattern: MVVM
 
 MVVM stands for Model, View, ViewModel. In this app we try to respect the responsabilities of each layer to make the code reusable and clear
+
+## Technical Environment used during the development phase
+
+- XCode 14.1 Silicon Chip
+- MacOS Ventura 13.0.1
+- MacBook Air M1 Silicon
 
 ## Prerequisites to build the app
 
@@ -44,7 +48,7 @@ To summarize, the different parts of this project architecture are MVVM + Servic
 - I wanted to build a UITabBar, with the homeScreen, a librairy screen in which there would be the news that the user save with his account and a search menu in which the user would be allow to search news related to specific words, and also find categories grouped by category.
 For this last point, I build on the code, especially in the NewsService.swift file, the network requests to get the news of a category; and the one for articles related to the user's keywords
 - Make so automated UI Tests and units tests to validate the network data parsing for example and other features
-- Prettify the User Interface
+- Prettify the User Interface; and take into account the dark theme
 
 
 ## App screenshots
