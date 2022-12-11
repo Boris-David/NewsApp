@@ -51,6 +51,7 @@ class HomeTabBarItemScreenViewController: UIViewController {
     
     @objc func refresh(sender: AnyObject) {
         self.viewModel.loadNews()
+        newsTableView.refreshControl?.endRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -20,7 +20,6 @@ extension HomeTabBarItemScreenViewController: ViewRequestsDelegate {
             case .gettingData:
                 break
             case .success:
-                self.newsTableView.refreshControl?.endRefreshing()
                 self.newsTableView.reloadData()
             case .failure(let error):
                 let _ = error
