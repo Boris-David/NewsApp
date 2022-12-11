@@ -11,7 +11,7 @@ To build the app, it is important to have the following elements:
 - MacOS one of the latest version
 - Xcode one of the latest version
 
-Warning: One more thing, in order to get the data from the api, it's a must to put your (https://newsapi.org/)'s apiKey value in the apiKeys PList file
+Warning: One more thing, in order to get the data from the api, it's a must to put your (https://newsapi.org/) apiKey value in the apiKeys PList file
 
 
 ## Technical presentation of the project
@@ -30,3 +30,11 @@ I choose the delegate pattern as binding and communication type between layers, 
 Another important part of the architecture of this project is the routing part. I choose to not put the routing logic in one of the MVVM layers because for me its not one of their responsibilities.
 
 To summarize, the different parts of this project architecture are MVVM + Service + Routing
+
+## What to improve
+
+- The first thing to improve in this app is the network calls error management. I've create the path to ease the error management but ive not implemented them
+- Set up an authentification system for the app, that will allow user to have data extra features like local data storages of their last api request result before a lost of internet connection and distant storages of the articles they save
+- I wanted to build a UITabBar, with the homeScreen, a librairy screen in which there would be the news that the user save with his account and a search menu in which the user would be allow to search news related to specific words, and also find categories grouped by category.
+For this last point, I build on the code, especially in the NewsService.swift file, the network requests to get the news of a category; and the one for articles related to the user's keywords
+- Make so automated UI Tests and units tests to validate the network data parsing for example and other features
