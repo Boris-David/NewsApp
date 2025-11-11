@@ -1,0 +1,51 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Description of what the lane does"
+  
+
+  lane:registerApp do
+    # The produce action allow to register an app on app Store connect
+    produce(
+      app_name: 'NewsApp.byDave',
+      language: 'English',
+      app_version: '1.0'
+    )
+
+  end
+
+  lane :beta do
+    # add actions here: https://docs.fastlane.tools/actions
+        # The build_app action allow to generate an ipa ( gym is an alias of build_app)
+
+    build_app(scheme: "NewsApp")
+  end
+
+  lane:get_dev_certificates_and_profiles do
+    cert(
+      development: true
+    )
+    sigh(
+      development: true
+    )
+  end
+
+  #  cert allow to automatically create signing certificate ()
+  #  sign allow to generate the provisioning profile
+
+end
